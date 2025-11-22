@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Agenda & Radio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            
+            <!-- EN-TÊTE -->
+            <div class="header">
+                <h1>📅 Mon Éphéméride</h1>
+                <div class="date-time" id="dateTime">Chargement...</div>
+                <div class="ephemeris" id="ephemeris">Chargement du soleil...</div>
+                <div class="daily-quote" id="dailyQuote">
+                    <span class="quote-text">...</span>
+                    <span class="quote-author"></span>
+                </div>
+            </div>
+
+            <!-- GRILLE PRINCIPALE -->
+            <div class="main-grid">
+                
+                <!-- COLONNE GAUCHE -->
+                <div class="column left-column">
+                    
+                    <!-- RADIO -->
+                    <div class="section radio-section">
+                        <h2>📻 Radio ICI Besançon</h2>
+                        <div class="radio-content">
+                            <div class="radio-header">
+                                <div class="radio-logo">📻</div>
+                                <p class="radio-tagline">France Bleu Besançon</p>
+                            </div>
+                            <div class="player-controls">
+                                <button class="control-btn" id="playBtn" onclick="togglePlay()">
+                                    <span id="playIcon">▶️</span>
+                                </button>
+                            </div>
+                            <div class="volume-control">
+                                <span class="volume-icon">🔊</span>
+                                <input type="range" min="0" max="100" value="70" class="volume-slider" id="volumeSlider">
+                                <span id="volumeValue">70%</span>
+                            </div>
+                            <div class="status" id="status">
+                                <div class="status-text" id="statusText">▶️ Cliquez pour écouter</div>
+                            </div>
+                            <div class="stream-options">
+                                <h3>Qualité :</h3>
+                                <div class="stream-buttons">
+                                    <button class="stream-btn active" onclick="changeStream('midfi')">Standard</button>
+                                    <button class="stream-btn" onclick="changeStream('hifi')">HD</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HOROSCOPES -->
+                    <div class="section horoscope-section">
+                        <h2>🔮 Nos Horoscopes</h2>
+                        <div class="horo-container">
+                            <div id="horoCapricorne"></div>
+                            <div id="horoTaureau"></div>
+                            <div id="horoSagittaire"></div>
+                        </div>
+                    </div>
+
+                    <!-- VIE PRATIQUE (NOUVEAU) -->
+                    <div class="section practical-section">
+                        <h2>🥖 Vie Pratique</h2>
+                        <div class="market-info">
+                            <h3>🥦 Jours de Marché</h3>
+                            <ul class="practical-list">
+                                <li><b>Révolution :</b> Mardi & Vendredi matin</li>
+                                <li><b>Beaux-Arts :</b> Mar. au Sam. matin</li>
+                                <li><b>Palente :</b> Mercredi matin</li>
+                            </ul>
+                        </div>
+                        <div class="emergency-links">
+                            <a href="https://www.3237.fr/" target="_blank" class="btn-small">💊 Pharmacie</a>
+                            <a href="https://www.grandbesancon.fr/toutes-les-demarches/dechets/" target="_blank" class="btn-small">♻️ Déchetteries</a>
+                        </div>
+                    </div>
+
+                </div> <!-- Fin Colonne Gauche -->
+
+                <!-- COLONNE CENTRE -->
+                <div class="column center-column">
+                    
+                    <!-- ACTUALITÉS UNE -->
+                    <div class="section news-section">
+                        <h2>🔥 À la Une</h2>
+                        <div id="rssUneContent" class="loading">Chargement...</div>
+                    </div>
+
+                    <!-- ACTUALITÉS LOISIRS -->
+                    <div class="section news-section">
+                        <h2>🎭 Sorties & Loisirs</h2>
+                        <div id="rssLoisirsContent" class="loading">Chargement...</div>
+                    </div>
+
+                    <!-- CULTURE (NOUVEAU) -->
+                    <div class="section culture-links">
+                        <h2>🎟️ Billetterie & Sorties</h2>
+                        <div class="quick-links-grid">
+                            <a href="https://larodia.com/agenda/" target="_blank">🎸 La Rodia</a>
+                            <a href="https://www.cdn-besancon.fr/" target="_blank">🎭 CDN Besançon</a>
+                            <a href="https://www.micropolis.fr/" target="_blank">🎪 Micropolis</a>
+                            <a href="https://beaux-arts.megarama.fr/FR/42/les-films-beaux-arts-besancon.html" target="_blank">🍿 Cinéma</a>
+                        </div>
+                    </div>
+
+                </div> <!-- Fin Colonne Centre -->
+
+                <!-- COLONNE DROITE -->
+                <div class="column right-column">
+                    
+                    <!-- MÉTÉO -->
+                    <div class="section weather-section">
+                        <h2>☁️ Météo Besançon</h2>
+                        <div id="weatherContent" class="weather-content">
+                            <div class="loading">Chargement météo...</div>
+                        </div>
+                    </div>
+
+                    <!-- BLOC-NOTES -->
+                    <div class="section notepad-section">
+                        <h2>📝 Mon Mémo</h2>
+                        <textarea id="myNotes" placeholder="Une idée ? Une liste de courses ? Écrivez ici..."></textarea>
+                    </div>
+
+                    <!-- GINKO (BOUTON) -->
+                    <div class="section ginko-section">
+                        <div class="ginko-header">
+                            <h2>🚋 Ginko Temps Réel</h2>
+                            <span class="ginko-logo-icon">🚍</span>
+                        </div>
+                        <div class="ginko-direct-access">
+                            <p>Consultez les horaires en temps réel sur le site officiel :</p>
+                            <a href="https://www.ginko.voyage/plan" target="_blank" class="ginko-btn">
+                                Voir les horaires ➜
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- WAZE -->
+                    <div class="section traffic-section">
+                        <h2>🚗 Info Trafic</h2>
+                        <div class="waze-container">
+                            <iframe src="https://embed.waze.com/iframe?zoom=14&lat=47.2378&lon=6.0241&ct=livemap" 
+                                width="100%" 
+                                height="250" 
+                                style="border:none;"
+                                allowfullscreen></iframe>
+                        </div>
+                        <p class="traffic-info">Trafic en temps réel</p>
+                    </div>
+
+                </div> <!-- Fin Colonne Droite -->
+
+            </div> <!-- Fin Main Grid -->
+        </div>
+    </div>
+
+    <audio id="radioPlayer" preload="none"></audio>
+    <script src="script.js"></script>
+</body>
+</html>

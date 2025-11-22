@@ -1,0 +1,181 @@
+/* =========================================
+   RESET & BASE
+   ========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('morteau.jpg'); 
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: #333;
+}
+
+.overlay {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container { max-width: 1400px; margin: 0 auto; }
+
+/* =========================================
+   HEADER & CITATION
+   ========================================= */
+.header {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.header h1 { font-size: 2.2em; color: #2c3e50; margin-bottom: 5px; }
+.date-time { font-size: 1.1em; color: #7f8c8d; font-weight: 500; text-transform: capitalize; }
+.ephemeris { margin-top: 8px; color: #667eea; font-weight: 600; font-size: 0.95em; letter-spacing: 0.5px; }
+.daily-quote {
+    margin-top: 20px; padding-top: 15px; border-top: 1px solid #e0e0e0;
+    font-style: italic; color: #555; max-width: 80%; margin-left: auto; margin-right: auto;
+}
+.quote-text { font-size: 1.1em; display: block; margin-bottom: 5px; }
+.quote-author { font-size: 0.9em; color: #888; font-weight: 600; font-style: normal; }
+
+/* =========================================
+   GRILLE PRINCIPALE
+   ========================================= */
+.main-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr 300px; 
+    gap: 25px;
+    align-items: start;
+}
+.left-column, .right-column {
+    display: flex; flex-direction: column; gap: 25px;
+    position: sticky; top: 20px; height: fit-content;
+}
+.center-column { display: flex; flex-direction: column; gap: 25px; }
+
+/* =========================================
+   DESIGN CARTES
+   ========================================= */
+.section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px; padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+.section h2 { font-size: 1.4em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #ccc; }
+
+/* =========================================
+   RADIO
+   ========================================= */
+.radio-section h2 { color: #667eea; border-bottom-color: #667eea; text-align: center; }
+.radio-content { text-align: center; }
+.radio-logo {
+    width: 64px; height: 64px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 30px; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); animation: pulse 2s infinite;
+}
+@keyframes pulse { 0% {transform:scale(0.95);} 70% {transform:scale(1);} 100% {transform:scale(0.95);} }
+.control-btn {
+    width: 70px; height: 70px; border-radius: 50%; border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-size: 28px; cursor: pointer;
+    margin: 15px auto; display: flex; align-items: center; justify-content: center; transition: transform 0.2s;
+}
+.control-btn:hover { transform: scale(1.05); }
+.control-btn.playing { animation: playing-pulse 1.5s infinite; }
+@keyframes playing-pulse { 0% {box-shadow: 0 0 0 0 rgba(102,126,234,0.7);} 100% {box-shadow: 0 0 0 15px rgba(102,126,234,0);} }
+.volume-control { margin: 15px 0; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.stream-options { margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; }
+.stream-btn { padding: 5px 12px; border: 1px solid #667eea; border-radius: 20px; background: none; color: #667eea; cursor: pointer; font-size: 0.85em; }
+.stream-btn.active { background: #667eea; color: white; }
+
+/* =========================================
+   ACTUS & HOROSCOPE
+   ========================================= */
+.horoscope-section h2 { color: #8e44ad; border-bottom-color: #8e44ad; }
+.horoscope-section .rss-item { border-left: 4px solid #9b59b6; background: #fdfaff; padding: 10px 15px; margin-bottom: 15px; }
+.news-section h2 { color: #e74c3c; border-bottom-color: #e74c3c; }
+.news-section .rss-item { background: #fff; border-left: 4px solid #e74c3c; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; }
+.news-section .rss-item:hover { transform: translateX(5px); }
+.news-section h3 a { color: #2c3e50; text-decoration: none; font-size: 1.2em; }
+.rss-date { font-size: 0.85em; color: #95a5a6; margin: 5px 0 10px; }
+.rss-description { line-height: 1.6; color: #444; font-size: 0.95em; }
+
+/* =========================================
+   MÉTÉO
+   ========================================= */
+.weather-section h2 { color: #3498db; border-bottom-color: #3498db; }
+.weather-content { text-align: center; color: #2c3e50; }
+.weather-main { margin-bottom: 15px; }
+.weather-icon { font-size: 4em; display: block; margin-bottom: 5px; }
+.weather-temp { font-size: 3em; font-weight: bold; color: #2c3e50; }
+.weather-desc { font-size: 1.2em; text-transform: capitalize; color: #7f8c8d; margin-bottom: 15px; }
+.weather-details { display: flex; justify-content: space-around; background: #f1f8ff; padding: 10px; border-radius: 10px; }
+.weather-detail-item { font-size: 0.9em; }
+
+/* =========================================
+   BLOC-NOTES
+   ========================================= */
+.notepad-section h2 { color: #f1c40f; border-bottom-color: #f1c40f; }
+.notepad-section textarea {
+    width: 100%; height: 200px; padding: 15px; border: 1px solid #e0e0e0;
+    border-radius: 8px; background: #fffef0; color: #444;
+    font-family: 'Segoe UI', sans-serif; font-size: 1em; line-height: 1.5;
+    resize: vertical; outline: none; transition: box-shadow 0.3s, border-color 0.3s;
+}
+.notepad-section textarea:focus { border-color: #f1c40f; box-shadow: 0 0 8px rgba(241, 196, 15, 0.3); background: #fff; }
+
+/* =========================================
+   GINKO & CULTURE & PRATIQUE (NOUVEAUX STYLES)
+   ========================================= */
+.ginko-section h2 { color: #00a4b4; border-bottom-color: #00a4b4; display: inline-block; margin-bottom: 0; }
+.ginko-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 3px solid #eee; padding-bottom: 10px; }
+.ginko-logo-icon { font-size: 1.5em; }
+
+.ginko-direct-access {
+    text-align: center; background: #eefbfb; padding: 15px; border-radius: 8px;
+}
+.ginko-direct-access p { margin-bottom: 15px; color: #555; font-size: 0.9em; }
+.ginko-btn {
+    display: inline-block; background-color: #00a4b4; color: white;
+    padding: 10px 20px; border-radius: 25px; text-decoration: none;
+    font-weight: bold; transition: background 0.3s, transform 0.2s;
+}
+.ginko-btn:hover { background-color: #008a99; transform: scale(1.05); }
+
+/* Vie Pratique */
+.practical-section h2 { color: #27ae60; border-bottom-color: #27ae60; }
+.practical-list { list-style: none; padding: 0; font-size: 0.95em; line-height: 1.8; color: #444; }
+.practical-list li::before { content: "• "; color: #27ae60; font-weight: bold; }
+.emergency-links { margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-small {
+    flex: 1; text-align: center; background: #eee; color: #333; text-decoration: none;
+    padding: 8px; border-radius: 5px; font-size: 0.85em; transition: background 0.2s;
+}
+.btn-small:hover { background: #ddd; }
+
+/* Culture */
+.culture-links h2 { color: #e84393; border-bottom-color: #e84393; }
+.quick-links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.quick-links-grid a {
+    background: #f8f9fa; border: 1px solid #ddd; padding: 10px; text-align: center;
+    text-decoration: none; color: #2c3e50; border-radius: 8px; font-weight: 600; font-size: 0.9em;
+}
+.quick-links-grid a:hover { background: #2c3e50; color: white; border-color: #2c3e50; }
+
+/* =========================================
+   WAZE
+   ========================================= */
+.traffic-section h2 { color: #2ecc71; border-bottom-color: #2ecc71; }
+.waze-container { border-radius: 10px; overflow: hidden; border: 1px solid #e0e0e0; }
+.traffic-info { margin-top: 10px; font-size: 0.85em; color: #7f8c8d; text-align: center; }
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+    .main-grid { grid-template-columns: 1fr; }
+    .left-column, .right-column { position: static; }
+}
