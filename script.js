@@ -34,7 +34,17 @@ const quotes = [
     { text: "Le succès n'est pas la clé du bonheur. Le bonheur est la clé du succès.", author: "Albert Schweitzer" },
     { text: "La seule façon de faire du bon travail est d'aimer ce que vous faites.", author: "Steve Jobs" },
     { text: "On ne voit bien qu'avec le cœur. L'essentiel est invisible pour les yeux.", author: "Antoine de Saint-Exupéry" },
-    { text: "Rien ne sert de courir, il faut partir à point.", author: "Jean de La Fontaine" }
+    { text: "Rien ne sert de courir, il faut partir à point.", author: "Jean de La Fontaine" },
+    { text: "La simplicité est la sophistication suprême.", author: "Leonardo da Vinci" },
+    { text: "Fais de ta vie un rêve, et d’un rêve, une réalité.", author: "Antoine de Saint-Exupéry" },
+    { text: "Le plus grand risque est de ne prendre aucun risque.", author: "Mark Zuckerberg" },
+    { text: "Chaque difficulté rencontrée doit être l’occasion d’un nouveau progrès.", author: "Pierre de Coubertin" },
+    { text: "Ce que l’on pense, on le devient.", author: "Bouddha" },
+    { text: "Le futur appartient à ceux qui croient à la beauté de leurs rêves.", author: "Eleanor Roosevelt" },
+    { text: "Le courage n’est pas l’absence de peur, mais la capacité de la vaincre.", author: "Nelson Mandela" },
+    { text: "Ils ne savaient pas que c’était impossible, alors ils l’ont fait.", author: "Mark Twain" },
+    { text: "La patience est amère, mais son fruit est doux.", author: "Jean-Jacques Rousseau" },
+    { text: "La connaissance parle, mais la sagesse écoute.", author: "Jimi Hendrix" }
 ];
 
 function displayDailyQuote() {
